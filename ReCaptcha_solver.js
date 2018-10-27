@@ -16,9 +16,8 @@ macro += "SET !EXTRACT_TEST_POPUP NO" + "\n";
 macro += "SET !ERRORIGNORE YES" + "\n";
 macro += "SET !TIMEOUT_PAGE 1" + "\n";
 macro += "'SET !TIMEOUT_STEP 1" + "\n";
-//macro += "URL GOTO=javascript:((function(){var%20a=window.content.document.getElementsByTagName('iframe');%20%20var%20k='';%20%20for(var%20x=0;x<a.length;x++)%20%20{%20%20%20if(a[x].src.includes('https://www.google.com/recaptcha/api2/anchor?k'))%20%20%20{%20%20%20%20k=a[x].src.split('?k=')[1].split('&')[0];%20%20%20%20a[x].setAttribute(\"name\",\"I0_myownid\");%20%20%20%20window.content.document.getElementById('g-recaptcha-response').style.display='';%20%20%20%20break;%20%20%20}%20%20}%20%20window.content.document.getElementById('g-recaptcha-response').textContent=k;}))();" + "\n";
 
-macro += "URL GOTO=javascript:((function(){var<SP>k=document.querySelector('[src^=\"https://www.google.com/recaptcha/api2/anchor?\"]').src.split('?k=')[1].split('&')[0];document.getElementById('g-recaptcha-response').style.display='';document.getElementById('g-recaptcha-response').textContent=k;}))();" + "\n";
+macro += "URL GOTO=javascript:((function(){var<SP>k=document.querySelector('[src^=\"https://www.google.com/recaptcha/api2/anchor?\"]').src.split('k=')[1].split('&')[0];document.getElementById('g-recaptcha-response').style.display='';document.getElementById('g-recaptcha-response').textContent=k;}))();" + "\n";
 
 macro += "SET !TIMEOUT_PAGE 60" + "\n";
 macro += "TAG POS=1 TYPE=TEXTAREA FORM=ID:* ATTR=ID:g-recaptcha-response EXTRACT=TXT" + "\n";
