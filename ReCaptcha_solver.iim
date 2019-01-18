@@ -15,7 +15,7 @@ SET !TIMEOUT_PAGE 1
 URL GOTO=javascript:((function(){document.getElementById('g-recaptcha-response').style.display=''}))();
 SET !TIMEOUT_PAGE 60
 TAG POS=1 TYPE=IFRAME ATTR=SRC:https://www.google.com/recaptcha/api2/anchor?* EXTRACT=HREF
-SET k EVAL("var s=\"{{!EXTRACT}}\"; s.split('?k=')[1].split('&')[0]")
+SET k EVAL("var s=\"{{!EXTRACT}}\"; s.split('k=')[1].split('&')[0]")
 SET !EXTRACT NULL
 SET url {{!URLCURRENT}}
 TAB OPEN
